@@ -2,7 +2,7 @@
 const API_URL = "https://yukchi-uz-production.up.railway.app";
 
 // ===============================
-//        RO'YXATDAN O'TISH
+//         RO'YXATDAN O'TISH
 // ===============================
 document.getElementById("signup-form").addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -11,34 +11,36 @@ document.getElementById("signup-form").addEventListener("submit", async function
     const password = document.getElementById("signup-password").value;
     const profileType = document.getElementById("regProfileType").value;
 
-    const res = await fetch("https://yukchi-uz-production.up.railway.app", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            username,
-            password,
-            profileType
-        })
-    });
+    try {
+        // DIQQAT: API_URL ishlatildi va oxiriga /signup qo'shildi
+        const res = await fetch(`${API_URL}/signup`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                username,
+                password,
+                profileType
+            })
+        });
 
-    const data = await res.json();
+        const data = await res.json();
 
-    if (data.status === "ok") {
-        alert("Ro'yxatdan o'tish muvaffaqiyatli!");
-
-        // LocalStorage'ga saqlaymiz
-        localStorage.setItem("profileType", profileType);
-        localStorage.setItem("username", username);
-
-        showLogin();
-    } else {
-        alert(data.message || "Xatolik!");
+        if (data.status === "ok") {
+            alert("Ro'yxatdan o'tish muvaffaqiyatli!");
+            localStorage.setItem("profileType", profileType);
+            localStorage.setItem("username", username);
+            showLogin();
+        } else {
+            alert(data.message || "Xatolik!");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Server bilan aloqa uzildi! (Signup)");
     }
 });
 
-
 // ===============================
-//             KIRISH
+//               KIRISH
 // ===============================
 document.getElementById("login-form").addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -46,32 +48,34 @@ document.getElementById("login-form").addEventListener("submit", async function 
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
 
-    const res = await fetch("https://yukchi-uz-production.up.railway.app", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-    });
+    try {
+        // DIQQAT: API_URL ishlatildi va oxiriga /login qo'shildi
+        const res = await fetch(`${API_URL}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
 
-    const data = await res.json();
+        const data = await res.json();
 
-    if (data.status === "ok") {
+        if (data.status === "ok") {
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("username", username);
 
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("username", username);
+            if (data.profileType) {
+                localStorage.setItem("profileType", data.profileType);
+            }
 
-        // Backenddan profil turi keladi
-        if (data.profileType) {
-            localStorage.setItem("profileType", data.profileType);
+            // Profilga o'tish
+            window.location.href = "truck.html";
+        } else {
+            alert(data.message || "Login yoki parol noto'g'ri!");
         }
-
-        // Profilga o'tish
-        window.location.href = "truck.html";
-
-    } else {
-        alert(data.message || "Login yoki parol noto'g'ri!");
+    } catch (err) {
+        console.error(err);
+        alert("Server bilan aloqa uzildi! (Login)");
     }
 });
-
 
 // ===============================
 //      KO‘RINISHLARNI ALMASHTIRISH

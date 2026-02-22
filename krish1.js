@@ -1,5 +1,5 @@
 // Serveringizning internetdagi manzili
-const API_URL = "https://yukchi-uz-production.up.railway.app";
+const API_URL = "https://yukchi-production.up.railway.app";
 
 // ===============================
 //         RO'YXATDAN O'TISH

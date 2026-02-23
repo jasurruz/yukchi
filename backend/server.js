@@ -5,29 +5,25 @@ const bcrypt = require("bcryptjs");
 const pool = require("./db");
 
 const app = express();
-app.use(express.json());
-app.use(cors());
 
-
-// ✅ CORS SOZLAMASINI MANA BUNDAY QILING:
+// ✅ 1. CORS sozlamasi (Faqat bir marta va eng tepada bo'lishi shart)
 app.use(cors({
-  origin: "*", // Barcha domenlardan (Vercel, mobil brauzerlar) so'rovlarni qabul qiladi
+  origin: "*", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// ✅ 2. Ma'lumotlarni o'qish uchun sozlama
 app.use(express.json());
 
-
-
-// ✅ Health check (DB ulanganini tekshiradi)
+// ✅ 3. Health check (Ulanishni tekshirish uchun)
 app.get("/health", async (req, res) => {
   try {
     const r = await pool.query("SELECT NOW() as now");
     res.json({ ok: true, now: r.rows[0].now });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ ok: false, message: "DB ulanmagan" });
+    console.error("DB ulanish xatosi:", err.message);
+    res.status(500).json({ ok: false, message: "DB ulanmagan: " + err.message });
   }
 });
 
@@ -36,8 +32,9 @@ app.post("/signup", async (req, res) => {
   try {
     const { username, password, profileType } = req.body;
 
-    if (!profileType)
-      return res.json({ status: "error", message: "Profil turi tanlanmagan!" });
+    if (!username || !password || !profileType) {
+      return res.json({ status: "error", message: "Barcha maydonlarni to'ldiring!" });
+    }
 
     const hashPass = bcrypt.hashSync(password, 10);
 
@@ -51,10 +48,10 @@ app.post("/signup", async (req, res) => {
       message: "Ro'yxatdan o'tish muvaffaqiyatli!",
     });
   } catch (err) {
-    console.error(err);
+    console.error("Signup error:", err.message);
     res.json({
       status: "error",
-      message: "Bu foydalanuvchi nomi band!",
+      message: "Bu foydalanuvchi nomi band yoki tizimda xatolik!",
     });
   }
 });
@@ -70,10 +67,7 @@ app.post("/login", async (req, res) => {
     );
 
     if (result.rows.length === 0)
-      return res.json({
-        status: "error",
-        message: "Foydalanuvchi topilmadi!",
-      });
+      return res.json({ status: "error", message: "Foydalanuvchi topilmadi!" });
 
     const user = result.rows[0];
 
@@ -87,8 +81,8 @@ app.post("/login", async (req, res) => {
       profileType: user.profiletype,
     });
   } catch (err) {
-    console.error(err);
-    res.json({ status: "error", message: "Server xatoligi" });
+    console.error("Login error:", err.message);
+    res.status(500).json({ status: "error", message: "Server xatoligi" });
   }
 });
 
@@ -96,18 +90,11 @@ app.post("/login", async (req, res) => {
 app.get("/getDriverInfo", async (req, res) => {
   try {
     const { username } = req.query;
+    const result = await pool.query("SELECT * FROM drivers WHERE username = $1", [username]);
 
-    const result = await pool.query(
-      "SELECT * FROM drivers WHERE username = $1",
-      [username]
-    );
-
-    if (result.rows.length === 0)
-      return res.json({
-        status: "ok",
-        karta: null,
-        transport: null,
-      });
+    if (result.rows.length === 0) {
+      return res.json({ status: "ok", karta: null, transport: null });
+    }
 
     res.json({
       status: "ok",
@@ -115,7 +102,7 @@ app.get("/getDriverInfo", async (req, res) => {
       transport: result.rows[0].transport,
     });
   } catch (err) {
-    console.error(err);
+    console.error("DriverInfo error:", err.message);
     res.json({ status: "error" });
   }
 });
@@ -124,17 +111,13 @@ app.get("/getDriverInfo", async (req, res) => {
 app.post("/getProfile", async (req, res) => {
   try {
     const { username } = req.body;
-
-    const result = await pool.query(
-      "SELECT * FROM users WHERE username = $1",
-      [username]
-    );
+    const result = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
 
     if (result.rows.length === 0) return res.json({ status: "error" });
 
     res.json(result.rows[0]);
   } catch (err) {
-    console.error(err);
+    console.error("Profile error:", err.message);
     res.json({ status: "error" });
   }
 });
@@ -145,10 +128,7 @@ app.post("/order", async (req, res) => {
     const { name, phone, from_city, to_city, cargo } = req.body;
 
     if (!name || !phone || !from_city || !to_city) {
-      return res.json({
-        status: "error",
-        message: "Iltimos, barcha maydonlarni to‘ldiring",
-      });
+      return res.json({ status: "error", message: "Iltimos, barcha maydonlarni to‘ldiring" });
     }
 
     await pool.query(
@@ -156,19 +136,15 @@ app.post("/order", async (req, res) => {
       [name, phone, from_city, to_city, cargo || ""]
     );
 
-    res.json({
-      status: "ok",
-      message: "Buyurtma qabul qilindi! Tez orada bog‘lanamiz.",
-    });
+    res.json({ status: "ok", message: "Buyurtma qabul qilindi!" });
   } catch (err) {
-    console.error(err);
-    res.json({
-      status: "error",
-      message: "Buyurtmani saqlashda xatolik",
-    });
+    console.error("Order error:", err.message);
+    res.json({ status: "error", message: "Buyurtmani saqlashda xatolik" });
   }
 });
 
-app.listen(process.env.PORT || 4000, () =>
-  console.log("Server portda ishga tushdi:", process.env.PORT || 4000)
-);
+// ✅ 4. Railway uchun eng muhim sozlama: PORT va HOST
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server ${PORT}-portda barqaror ishlamoqda`);
+});

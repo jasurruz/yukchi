@@ -323,3 +323,30 @@ nav a{
     grid-template-columns: 1fr;
   }
 }
+
+
+
+/*ttazaa*/
+
+
+.hero{
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  padding: 80px 0;
+}
+
+.hero h1{
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.hero .sub{
+  opacity: 0.85;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.hero-image{
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-radius: 20px;
+}

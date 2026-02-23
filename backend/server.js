@@ -6,15 +6,30 @@ const pool = require("./db");
 
 const app = express();
 
-// ✅ CORS (ENG MUHIM JOY)
-app.use(cors({
-  origin: ["https://yukchi.vercel.app"],  // frontend domeningiz
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
+/* ✅ CORS FIX (ENG ISHONCHLI VARIANT)
+   - Vercel origin'ni aniq ruxsat qiladi
+   - OPTIONS preflight'ni darrov 204 bilan yopadi
+*/
+const allowedOrigins = ["https://yukchi.vercel.app"];
 
-// ✅ Preflight (OPTIONS) uchun
-app.options("*", cors());
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Vary", "Origin");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  // ✅ Preflight
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
 
 // ✅ JSON o‘qish
 app.use(express.json());

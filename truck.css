@@ -151,3 +151,175 @@ nav a:hover { color: #4db8ff; }
 @media (max-width:520px){
   .footer-columns { grid-template-columns:1fr; }
 }
+
+
+
+
+
+
+
+
+/* ====== Responsive Fixes (Mobile) ====== */
+
+/* Header layout */
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;             /* mobilga tushganda qatorga tushadi */
+  padding: 12px 14px;
+}
+
+header h1{
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+  flex: 1 1 220px;             /* sarlavha moslashadi */
+  text-align: center;
+}
+
+header img{
+  max-width: 140px;
+  height: auto;
+}
+
+/* Header right controls */
+header select,
+header .auth-link,
+header .profile-btn{
+  margin-left: 6px;
+}
+
+/* Nav wrap */
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 14px;
+}
+
+nav a{
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* Hero layout */
+.hero .hero-inner{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero .hero-left,
+.hero .hero-right{
+  flex: 1 1 0;
+}
+
+.hero .hero-image{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+/* Email CTA */
+.email-cta{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.email-cta input{
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+/* Features grid fallback */
+.features-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ====== Mobile breakpoint ====== */
+@media (max-width: 768px){
+
+  header{
+    gap: 10px;
+  }
+
+  header h1{
+    font-size: 18px;
+    text-align: left;
+    flex: 1 1 100%;
+  }
+
+  header img{
+    max-width: 120px;
+  }
+
+  /* Right controls on new row */
+  header > div:last-child{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  /* Nav becomes scrollable instead of squishing */
+  nav{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+  }
+
+  nav a{
+    flex: 0 0 auto;
+  }
+
+  /* Hero stacks */
+  .hero .hero-inner{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero h1{
+    font-size: 22px;
+  }
+
+  .hero .sub{
+    font-size: 15px;
+  }
+
+  /* CTA buttons full width on mobile */
+  .hero-ctas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-ctas .btn{
+    width: 100%;
+  }
+
+  .email-cta{
+    flex-direction: column;
+  }
+
+  .email-cta input,
+  .email-cta button{
+    width: 100%;
+  }
+
+  /* Features grid -> 1 column */
+  .features-grid{
+    grid-template-columns: 1fr;
+  }
+}

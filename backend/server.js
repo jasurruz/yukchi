@@ -126,7 +126,8 @@ app.post("/order", async (req, res) => {
 });
 
 // ✅ Railway PORT
-const PORT = process.env.PORT || 4000;
+const PORT = Number(process.env.PORT) || 8080;
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server ${PORT}-portda ishlamoqda`);
 });

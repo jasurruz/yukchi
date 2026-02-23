@@ -31,7 +31,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
             localStorage.setItem("username", username);
             showLogin();
         } else {
-            alert(data.message || "Xatolik!");
+            alert(data.message || "Xatolik!");  
         }
     } catch (err) {
         console.error(err);

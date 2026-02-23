@@ -177,7 +177,7 @@ document.querySelector(".profile-btn").addEventListener("click", () => {
     const loggedIn = localStorage.getItem("loggedIn");
     if (!loggedIn) {
         alert("Profilga o‘tish uchun avval tizimga kiring!");
-        window.location.href = "kirish1.html";
+        window.location.href = "index.html";
     } else {
         window.location.href = "profile.html";
     }
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         
         authLink.textContent = 'Kirish';
-        authLink.href = 'kirish1.html';
+        authLink.href = 'index.html';
         setSignupVisibility(true);
     }
 });

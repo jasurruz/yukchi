@@ -6,17 +6,20 @@ const pool = require("./db");
 
 const app = express();
 
-// ✅ 1. CORS sozlamasi (Faqat bir marta va eng tepada bo'lishi shart)
+// ✅ CORS (ENG MUHIM JOY)
 app.use(cors({
-  origin: "*", 
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: ["https://yukchi.vercel.app"],  // frontend domeningiz
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// ✅ 2. Ma'lumotlarni o'qish uchun sozlama
+// ✅ Preflight (OPTIONS) uchun
+app.options("*", cors());
+
+// ✅ JSON o‘qish
 app.use(express.json());
 
-// ✅ 3. Health check (Ulanishni tekshirish uchun)
+// ✅ Health check
 app.get("/health", async (req, res) => {
   try {
     const r = await pool.query("SELECT NOW() as now");
@@ -27,7 +30,7 @@ app.get("/health", async (req, res) => {
   }
 });
 
-// ---------------- RO‘YXATDAN O‘TISH (SIGNUP)
+// ---------------- SIGNUP
 app.post("/signup", async (req, res) => {
   try {
     const { username, password, profileType } = req.body;
@@ -56,7 +59,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// ---------------- KIRISH (LOGIN)
+// ---------------- LOGIN
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -86,43 +89,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// ---------------- DRIVER INFO
-app.get("/getDriverInfo", async (req, res) => {
-  try {
-    const { username } = req.query;
-    const result = await pool.query("SELECT * FROM drivers WHERE username = $1", [username]);
-
-    if (result.rows.length === 0) {
-      return res.json({ status: "ok", karta: null, transport: null });
-    }
-
-    res.json({
-      status: "ok",
-      karta: result.rows[0].karta,
-      transport: result.rows[0].transport,
-    });
-  } catch (err) {
-    console.error("DriverInfo error:", err.message);
-    res.json({ status: "error" });
-  }
-});
-
-// ---------------- PROFILE
-app.post("/getProfile", async (req, res) => {
-  try {
-    const { username } = req.body;
-    const result = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
-
-    if (result.rows.length === 0) return res.json({ status: "error" });
-
-    res.json(result.rows[0]);
-  } catch (err) {
-    console.error("Profile error:", err.message);
-    res.json({ status: "error" });
-  }
-});
-
-// ---------------- BUYURTMA QABUL QILISH
+// ---------------- ORDER
 app.post("/order", async (req, res) => {
   try {
     const { name, phone, from_city, to_city, cargo } = req.body;
@@ -143,8 +110,8 @@ app.post("/order", async (req, res) => {
   }
 });
 
-// ✅ 4. Railway uchun eng muhim sozlama: PORT va HOST
+// ✅ Railway PORT
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server ${PORT}-portda barqaror ishlamoqda`);
+  console.log(`Server ${PORT}-portda ishlamoqda`);
 });

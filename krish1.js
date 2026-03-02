@@ -4,110 +4,118 @@ const API_URL = "https://yukchi-production.up.railway.app";
 // ===============================
 //         RO'YXATDAN O'TISH
 // ===============================
-document.getElementById("signup-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
+const signupForm = document.getElementById("signup-form");
+if (signupForm) {
+    signupForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    const username = document.getElementById("signup-username").value;
-    const password = document.getElementById("signup-password").value;
-    const profileType = document.getElementById("regProfileType").value;
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-password").value;
+        const profileType = document.getElementById("regProfileType").value;
 
-    try {
-        // DIQQAT: API_URL ishlatildi va oxiriga /signup qo'shildi
-        const res = await fetch(`${API_URL}/signup`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username,
-                password,
-                profileType
-            })
-        });
+        try {
+            const res = await fetch(`${API_URL}/signup`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password, profileType })
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (data.status === "ok") {
-            alert("Ro'yxatdan o'tish muvaffaqiyatli!");
-            localStorage.setItem("profileType", profileType);
-            localStorage.setItem("username", username);
-            showLogin();
-        } else {
-            alert(data.message || "Xatolik!");  
+            if (data.status === "ok") {
+                alert("Ro'yxatdan o'tish muvaffaqiyatli!");
+                localStorage.setItem("profileType", profileType);
+                localStorage.setItem("username", username);
+                showLogin();
+            } else {
+                alert(data.message || "Xatolik!");  
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Server bilan aloqa uzildi! (Signup)");
         }
-    } catch (err) {
-        console.error(err);
-        alert("Server bilan aloqa uzildi! (Signup)");
-    }
-});
+    });
+}
 
 // ===============================
 //               KIRISH
 // ===============================
-document.getElementById("login-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
+const loginForm = document.getElementById("login-form");
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    const username = document.getElementById("login-username").value;
-    const password = document.getElementById("login-password").value;
+        const username = document.getElementById("login-username").value;
+        const password = document.getElementById("login-password").value;
 
-    try {
-        // DIQQAT: API_URL ishlatildi va oxiriga /login qo'shildi
-        const res = await fetch(`${API_URL}/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
-        });
+        try {
+            const res = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (data.status === "ok") {
-            localStorage.setItem("loggedIn", "true");
-            localStorage.setItem("username", username);
+            if (data.status === "ok") {
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("username", username);
+                localStorage.setItem("profileType", data.profileType); // Bazadan kelgan rol
 
-            if (data.profileType) {
-                localStorage.setItem("profileType", data.profileType);
+                // Profilga o'tish
+                window.location.href = "truck.html";
+            } else {
+                alert(data.message || "Login yoki parol noto'g'ri!");
             }
-
-            // Profilga o'tish
-            window.location.href = "truck.html";
-        } else {
-            alert(data.message || "Login yoki parol noto'g'ri!");
+        } catch (err) {
+            console.error(err);
+            alert("Server bilan aloqa uzildi! (Login)");
         }
-    } catch (err) {
-        console.error(err);
-        alert("Server bilan aloqa uzildi! (Login)");
-    }
-});
+    });
+}
 
 // ===============================
 //      KO‘RINISHLARNI ALMASHTIRISH
 // ===============================
-document.getElementById("show-login").addEventListener("click", showLogin);
-document.getElementById("show-signup").addEventListener("click", showSignup);
+const showLoginBtn = document.getElementById("show-login");
+const showSignupBtn = document.getElementById("show-signup");
+
+if (showLoginBtn) showLoginBtn.addEventListener("click", showLogin);
+if (showSignupBtn) showSignupBtn.addEventListener("click", showSignup);
 
 function showLogin() {
-    document.getElementById("signup-container").style.display = "none";
-    document.getElementById("login-container").style.display = "block";
+    if(document.getElementById("signup-container")) document.getElementById("signup-container").style.display = "none";
+    if(document.getElementById("login-container")) document.getElementById("login-container").style.display = "block";
 }
 
 function showSignup() {
-    document.getElementById("signup-container").style.display = "block";
-    document.getElementById("login-container").style.display = "none";
+    if(document.getElementById("signup-container")) document.getElementById("signup-container").style.display = "block";
+    if(document.getElementById("login-container")) document.getElementById("login-container").style.display = "none";
 }
 
+// ===============================
+//    NAVIGATSIYA (ROLLAR BO'YICHA)
+// ===============================
 document.addEventListener("DOMContentLoaded", function() {
-    // LocalStorage-dan foydalanuvchi turini olamiz
     const profileType = localStorage.getItem("profileType"); 
+    const loggedIn = localStorage.getItem("loggedIn");
 
     const yukOlishLink = document.getElementById("nav-yuk-olish");
     const yukBerishLink = document.getElementById("nav-yuk-berish");
 
-    if (profileType === "Haydovchi") {
-        // Haydovchi bo'lsa: Yuk-berishni yashiramiz
-        if (yukBerishLink) yukBerishLink.style.display = "none";
-        if (yukOlishLink) yukOlishLink.style.display = "inline-block";
-    } 
-    else if (profileType === "Foydalanuvchi") {
-        // Foydalanuvchi bo'lsa: Yuk-olishni yashiramiz
+    // Agar tizimga kirmagan bo'lsa, maxsus menyularni yashiramiz
+    if (!loggedIn) {
         if (yukOlishLink) yukOlishLink.style.display = "none";
-        if (yukBerishLink) yukBerishLink.style.display = "inline-block";
+        if (yukBerishLink) yukBerishLink.style.display = "none";
+    } 
+    else {
+        if (profileType === "Haydovchi") {
+            if (yukBerishLink) yukBerishLink.style.display = "none";
+            if (yukOlishLink) yukOlishLink.style.display = "inline-block";
+        } 
+        else if (profileType === "Foydalanuvchi") {
+            if (yukOlishLink) yukOlishLink.style.display = "none";
+            if (yukBerishLink) yukBerishLink.style.display = "inline-block";
+        }
     }
 });

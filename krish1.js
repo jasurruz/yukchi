@@ -92,3 +92,22 @@ function showSignup() {
     document.getElementById("signup-container").style.display = "block";
     document.getElementById("login-container").style.display = "none";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // LocalStorage-dan foydalanuvchi turini olamiz
+    const profileType = localStorage.getItem("profileType"); 
+
+    const yukOlishLink = document.getElementById("nav-yuk-olish");
+    const yukBerishLink = document.getElementById("nav-yuk-berish");
+
+    if (profileType === "Haydovchi") {
+        // Haydovchi bo'lsa: Yuk-berishni yashiramiz
+        if (yukBerishLink) yukBerishLink.style.display = "none";
+        if (yukOlishLink) yukOlishLink.style.display = "inline-block";
+    } 
+    else if (profileType === "Foydalanuvchi") {
+        // Foydalanuvchi bo'lsa: Yuk-olishni yashiramiz
+        if (yukOlishLink) yukOlishLink.style.display = "none";
+        if (yukBerishLink) yukBerishLink.style.display = "inline-block";
+    }
+});

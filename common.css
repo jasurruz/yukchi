@@ -89,3 +89,16 @@ body{
   .topbar .navbar-nav{ padding-top: 10px; }
   .topbar .nav-link{ padding: 10px 12px !important; }
 }
+.lang-select{
+  min-width: 110px;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  background: rgba(255,255,255,0.06) !important;
+  color: #fff !important;
+  padding-left: 14px !important;
+  padding-right: 30px !important;
+}
+
+.lang-select option{
+  color:#000; /* dropdown ichida qora bo‘lsin */
+}

@@ -219,3 +219,23 @@ main h2{
 @media (max-width: 520px){
   .footer-columns{ grid-template-columns: 1fr; }
 }
+/* Navbar har doim tepada turishi uchun */
+.topbar{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999 !important;
+  background: linear-gradient(90deg, #0a0a23, #0b3472);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Navbar fixed bo‘lgani uchun kontent tepaga kirib ketmasin */
+body{
+  padding-top: 70px; /* navbar balandligiga mos */
+}
+
+#map{
+  position: relative;
+  z-index: 1;
+}

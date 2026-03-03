@@ -1,0 +1,91 @@
+/* ===== Common site styles (ALL PAGES) ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* bir xil fon */
+body{
+  background-color:#0b3472;
+  color:#fff;
+}
+
+/* ===== NAVBAR ===== */
+.topbar{
+  background: linear-gradient(90deg, #0a0a23, #0b3472);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.brand-logo{
+  height: 40px;
+  width: auto;
+}
+
+.topbar .nav-link{
+  color: rgba(255,255,255,0.92) !important;
+  font-weight: 600;
+  padding: 10px 12px !important;
+  border-radius: 12px;
+  transition: background .15s ease, transform .1s ease, color .15s ease;
+}
+
+.topbar .nav-link:hover{
+  background: rgba(255,255,255,0.08);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.topbar .auth-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.14);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background .15s ease, color .15s ease, transform .08s ease;
+}
+
+.topbar .auth-link:hover{
+  background: #ffffff;
+  color: #0b3472 !important;
+  transform: translateY(-2px);
+}
+
+.topbar .profile-btn{
+  border-radius: 999px !important;
+  padding: 8px 14px !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(77,184,255,0.22) !important;
+  color: #ffffff !important;
+  transition: transform .08s ease, filter .15s ease;
+}
+
+.topbar .profile-btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.topbar .navbar-toggler{
+  border-color: rgba(255,255,255,0.22);
+}
+
+.topbar .navbar-toggler-icon{
+  filter: invert(1);
+}
+
+@media (max-width: 768px){
+  .brand-logo{ height: 34px; }
+  .topbar .navbar-nav{ padding-top: 10px; }
+  .topbar .nav-link{ padding: 10px 12px !important; }
+}

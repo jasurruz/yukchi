@@ -3,6 +3,10 @@
    Navbar + footer = common.css
    Bu fayl faqat Aloqa page kontenti uchun
 ========================= */
+body{
+  background-color:#e2e4e9;
+  color:#da1212;
+}
 
 .contact-title{
   text-align: center;

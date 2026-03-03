@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbarHTML = `
   <nav class="navbar navbar-expand-lg topbar">
     <div class="container-fluid px-4">
-
       <a class="navbar-brand d-flex align-items-center gap-2" href="truck.html">
         <img src="logistik.png" alt="Logo" class="brand-logo" />
       </a>
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </ul>
 
         <div class="d-flex align-items-center gap-2">
-          <!-- Til tanlash -->
           <select class="form-select form-select-sm lang-select" id="langSelect" aria-label="Til tanlash">
             <option value="uz">O'zbek</option>
             <option value="ru">Русский</option>
@@ -42,24 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   mount.innerHTML = navbarHTML;
 
-  // ✅ active menu
+  // active menu
   const current = location.pathname.split("/").pop() || "truck.html";
-  document.querySelectorAll(".topbar .nav-link").forEach(a => {
+  document.querySelectorAll(".topbar .nav-link").forEach((a) => {
     if (a.getAttribute("href") === current) a.classList.add("active");
   });
 
-  // ✅ Tilni saqlash (localStorage)
+  // tilni saqlash
   const langSelect = document.getElementById("langSelect");
   const savedLang = localStorage.getItem("siteLang");
   if (savedLang) langSelect.value = savedLang;
 
   langSelect.addEventListener("change", () => {
     localStorage.setItem("siteLang", langSelect.value);
-    // Hozircha faqat saqlayapmiz. Keyin matnlarni ham almashtirib beraman.
-    // location.reload();  // xohlasangiz yoqing
   });
 
-  // ✅ Kirish/Chiqish
+  // Kirish/Chiqish
   const authLink = document.getElementById("authLink");
   const loggedIn = localStorage.getItem("loggedIn") === "true";
 
@@ -77,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     authLink.href = "kirish1.html";
   }
 
-  // ✅ Profile button
+  // Profile
   const profileBtn = document.getElementById("profileBtn");
   profileBtn.addEventListener("click", () => {
     const ok = localStorage.getItem("loggedIn") === "true";
@@ -88,4 +84,4 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "profile.html";
     }
   });
-});s
+});

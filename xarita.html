@@ -18,31 +18,9 @@
     </style>
 </head>
 <body>
+<div id="navbar-mount"></div>
 
-<header>
-    <div>
-        <img src="logistik.png" alt="TruckWay Logo" width="180">
-    </div>
-    <h1>Yukchi.uz Kompaniyasi</h1>
-    <div>
-        <select>
-            <option>O'zbek</option>
-            <option>Русский</option>
-            <option>English</option>
-        </select>
-        <a href="#" class="auth-link">Kirish</a>
-        <a href="profile.html" class="auth-link">Profile</a>
-    </div>
-</header>
 
-<nav>
-    <a href="truck.html">Bosh sahifa</a>
-    <a href="yukolish.html">Yuk-olish</a>
-    <a href="yukberish.html">Yuk-berish</a>
-    <a href="filiallar.html">Filiallar</a>
-    <a href="aloqa.html">Aloqa</a>
-    <a href="xarita.html">Xarita</a>
-</nav>
 
 <main>
     <h2>Bizning filiallar joylashuvi</h2>
@@ -104,7 +82,42 @@
                 }
             });
         </script>
+ 
 
+<!-- ✅ Avval navbar yuklansin -->
+  <script src="load-navbar.js"></script>
+
+  <!-- ✅ Bootstrap JS (collapse ishlashi uchun) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Yandex map init -->
+  <script>
+    ymaps.ready(init);
+
+    function init() {
+      var map = new ymaps.Map("map", {
+        center: [41.5533, 60.6317],
+        zoom: 7
+      });
+
+      var filiallar = [
+        { name: "Yukchi Urganch", coords: [41.553, 60.6317] },
+        { name: "Yukchi Toshkent", coords: [41.2995, 69.2401] },
+        { name: "Yukchi Namangan", coords: [41.0, 71.67] },
+        { name: "Yukchi Buxoro", coords: [39.77, 64.43] },
+        { name: "Yukchi Samarqand", coords: [39.65, 66.96] }
+      ];
+
+      filiallar.forEach(f => {
+        var marker = new ymaps.Placemark(
+          f.coords,
+          { balloonContent: "<b>" + f.name + "</b>" },
+          { preset: "islands#blueDeliveryIcon" }
+        );
+        map.geoObjects.add(marker);
+      });
+    }
+  </script> 
     </body>
     </html>
 <br>

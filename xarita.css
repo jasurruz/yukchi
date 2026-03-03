@@ -6,7 +6,11 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+/* ===== PAGE BASE (truck.html bilan bir xil) ===== */
+body{
+  background-color: #ffffff;
+  color: #0b3472;
+}
 
 /* ===== NAVBAR (topbar) ===== */
 .topbar{

@@ -114,3 +114,38 @@ main{
     padding: 28px 14px 50px;
   }
 }
+
+
+/* MAIN kengligi (desktopda yonma-yon chiqishi uchun) */
+main{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* Yonma-yon layout (desktop) */
+.contact-container{
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;           /* ✅ DESKTOP: pastga tushmasin */
+}
+
+/* Ikkala kartaga teng joy */
+.contact-info,
+.contact-form{
+  flex: 1 1 0;                 /* ✅ teng bo‘lib bo‘linadi */
+  min-width: 420px;            /* ✅ juda kichrayib ketmasin */
+}
+
+/* ✅ Mobile: pastga tushsin */
+@media (max-width: 992px){
+  .contact-container{
+    flex-wrap: wrap;           /* mobile/tablet: pastga tushadi */
+  }
+  .contact-info,
+  .contact-form{
+    min-width: 100%;
+  }
+}

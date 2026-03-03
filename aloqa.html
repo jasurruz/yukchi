@@ -1,162 +1,98 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruckWay Kompaniyasi - Aloqa</title>
-    <link rel="stylesheet" href="aloqa.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruckWay Kompaniyasi - Aloqa</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="aloqa.css">
 </head>
+
 <body>
-    <header>
-        <div>
-            <img src="logistik.png" alt="TruckWay Logo" width="180">
+  <div id="navbar-mount"></div>
+
+  <main>
+    <h2 class="contact-title">Biz bilan bog'laning</h2>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Ofis manzili</h3>
+        <p>📍 Urganch shahri, Al-Xorazmiy ko'chasi 45-uy</p>
+
+        <h3>Telefon raqamlar</h3>
+        <p>📞 +998 90 123 45 67</p>
+        <p>📞 +998 99 765 43 21</p>
+
+        <h3>Email</h3>
+        <p>📧 info@Yukchi.uz</p>
+
+        <h3>Ish vaqti</h3>
+        <p>🕒 Dushanba - Shanba: 09:00 - 18:00</p>
+        <p>🕒 Yakshanba: Dam olish kuni</p>
+      </div>
+
+      <div class="contact-form">
+        <h3>Bizga xabar yuboring</h3>
+        <form action="#">
+          <input type="text" placeholder="Ismingiz" required>
+          <input type="email" placeholder="Email manzilingiz" required>
+          <textarea placeholder="Xabaringiz..." rows="5" required></textarea>
+          <button type="submit">Yuborish</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-columns">
+          <div class="col">
+            <h5>truckway</h5>
+            <ul>
+              <li><a href="truck.html">Bosh sahifa</a></li>
+              <li><a href="yukolish.html">Xizmatlar</a></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="aloqa.html">Yordam mavzulari</a></li>
+              <li><a href="#">Support Center</a></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <h5>Blog</h5>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Yangiliklar</a></li>
+            </ul>
+          </div>
         </div>
-        <h1>Yukchi.uz Kompaniyasi</h1>
-        <div>
-            <select>
-                <option>O'zbek</option>
-                <option>Русский</option>
-                <option>English</option>
-            </select>
-            <a href="#" class="auth-link">Kirish</a>
-            <button onclick="window.location.href='profile.html'" class="profile-btn">
-    Profile
-        </div>
-    </header>
 
-    <nav>
-        <a href="truck.html">Bosh sahifa</a>
-        <a href="yukolish.html">Yuk-olish</a>
-        <a href="yukberish.html">Yuk-berish</a>
-        <a href="filiallar.html">Filiallar</a>
-        <a href="aloqa.html">Aloqa</a>
-        <a href="xarita.html">Xarita</a>
-    </nav>
+        <div class="footer-brand-right">
+          <div class="brand-box">
+            <p class="brand-desc">Bizning ijtimoiy tarmoqlarimiz orqali kompaniyamiz bilan bog‘lanishingiz mumkin.</p>
 
-    <main>
-        <h2 class="contact-title">Biz bilan bog'laning</h2>
-
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Ofis manzili</h3>
-                <p>📍   Urganch shahri,Al-Xorazmiy ko'chasi 45-uy</p>
-
-                <h3>Telefon raqamlar</h3>
-                <p>📞 +998 90 123 45 67</p>
-                <p>📞 +998 99 765 43 21</p>
-
-                <h3>Email</h3>
-                <p>📧 info@Yukchi.uz</p>
-
-                <h3>Ish vaqti</h3>
-                <p>🕒 Dushanba - Shanba: 09:00 - 18:00</p>
-                <p>🕒 Yakshanba: Dam olish kuni</p>
+            <div class="brand-contacts">
+              <a href="mailto:info@yukchi.uz" class="icon-link" aria-label="Email">✉</a>
+              <a href="tel:+998901234567" class="icon-link" aria-label="Phone">☎</a>
+              <a href="https://t.me/yukchiplatrformasi" class="icon-link" target="_blank" rel="noopener" aria-label="Telegram">➤</a>
             </div>
-
-            <div class="contact-form">
-                <h3>Bizga xabar yuboring</h3>
-                <form action="#">
-                    <input type="text" placeholder="Ismingiz" required>
-                    <input type="email" placeholder="Email manzilingiz" required>
-                    <textarea placeholder="Xabaringiz..." rows="5" required></textarea>
-                    <button type="submit">Yuborish</button>
-                </form>
-            </div>
+          </div>
         </div>
-    </main>
-       
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            const authLink = document.querySelector('.auth-link');
-            if(!authLink) return;
-            const loggedIn = (function(){ try { return localStorage.getItem('loggedIn') === 'true'; } catch(e){ return false; } })();
-            if(loggedIn){
-                authLink.textContent = 'Chiqish';
-                authLink.href = '#';
-                const newLink = authLink.cloneNode(true);
-                authLink.parentNode.replaceChild(newLink, authLink);
-                newLink.addEventListener('click', function(e){
-                    e.preventDefault();
-                    try{ localStorage.removeItem('loggedIn'); localStorage.removeItem('username'); } catch(err){}
-                    window.location.href = 'truck.html';
-                });
-            } else {
-                authLink.textContent = 'Kirish';
-                authLink.href = 'kirish1.html';
-            }
-        });
-    </script>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Scriptlar doim body oxirida -->
+  <script src="load-navbar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-
-<footer class="site-footer">
-            <div class="container footer-inner">
-                <div class="footer-top">
-                    
-
-                    <div class="footer-columns">
-                        <div class="col">
-                            <h5>truckway</h5>
-                            <ul>
-                                <li><a href="truck.html">Bosh sahifa</a></li>
-                                <li><a href="yukolish.html">Xizmatlar</a></li>
-                                
-                           
-                            </ul>
-                        </div>
-
-                        <div class="col">
-                            <h5>Support</h5>
-                            <ul>
-                                <li><a href="aloqa.html">Yordam mavzulari</a></li>
-                                
-                                <li><a href="#">Support Center</a></li>
-                                
-                            </ul>
-                        </div>
-
-                        
-
-                        <div class="col">
-                            <h5>Blog</h5>
-                            <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Yangiliklar</a></li>
-                                
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="footer-brand-right">
-                        <div class="brand-box">
-                            
-                              <div class="col">
-    <p class="brand-desc">Bizning ijtimoiy tarmoqlarimiz orqali kompaniyamiz bilan bog‘lanishingiz mumkin.</p>
-</div>
-<br>
-
-                            <div class="brand-contacts">
-                                <a href="mailto:info@yukchi.uz" class="icon-link" aria-label="Email">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13a2.5 2.5 0 0 0 2.5-2.5v-7" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-                                <a href="tel:+998901234567" class="icon-link" aria-label="Phone">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.76 3.03a2 2 0 0 1-.45 2.11L9.91 10.09a16 16 0 0 0 6 6l1.23-1.23a2 2 0 0 1 2.11-.45c.96.38 1.98.64 3.03.76A2 2 0 0 1 22 16.92z" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-                                <a href="https://t.me/yukchiplatrformasi" class="icon-link" target="_blank" rel="noopener" aria-label="Telegram">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L2 12l4 1 1 4 15-15-5 13 4-13z" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-
-                                
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-            </div>
-        </footer>
+</html>s

@@ -73,13 +73,13 @@ main{
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
-  color: #ffffff;
+  color: #000000;
   outline: none;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder{
-  color: rgba(255,255,255,0.65);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .contact-form input:focus,
@@ -96,7 +96,7 @@ main{
   font-weight: 800;
   cursor: pointer;
   background: #ff7a00;
-  color: #ffffff;
+  color: #000000;
   transition: transform .08s ease, filter .15s ease;
 }
 

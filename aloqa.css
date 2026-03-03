@@ -50,12 +50,12 @@ main{
   font-size: 18px;
   font-weight: 800;
   margin: 0 0 10px;
-  color: #ffffff;
+  color: #000000;
 }
 
 .contact-info p{
   margin: 0 0 12px;
-  color: rgba(255,255,255,0.88);
+  color: rgba(0, 0, 0, 0.88);
   line-height: 1.45;
 }
 

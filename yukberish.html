@@ -1,230 +1,188 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruckWay Kompaniyasi</title>
-    <link rel="stylesheet" href="yukberish.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuk berish — Yukchi.uz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="yukberish.css">
 </head>
 <body>
-    <header>
-        <div>
-            <img src="logistik.png  " alt="TruckWay Logo" width="180">
+
+    <nav class="navbar navbar-expand-lg topbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="truck.html">
+        <img src="logistik.png" alt="Yukchi.uz Logo" class="brand-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="truck.html">Bosh sahifa</a></li>
+          <li class="nav-item"><a class="nav-link" href="yukolish.html">Yuk-olish</a></li>
+          <li class="nav-item"><a class="nav-link active" href="yukberish.html">Yuk-berish</a></li>
+          <li class="nav-item"><a class="nav-link" href="filiallar.html">Filiallar</a></li>
+          <li class="nav-item"><a class="nav-link" href="aloqa.html">Aloqa</a></li>
+          <li class="nav-item"><a class="nav-link" href="xarita.html">Xarita</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <select class="lang-select form-select form-select-sm">
+            <option>O'zbek</option>
+            <option>Русский</option>
+            <option>English</option>
+          </select>
+          <a href="kirish1.html" class="auth-link" id="authLink">Kirish</a>
+          <button class="profile-btn" id="profileBtn">Profile</button>
         </div>
-        <h1>Yukchi.uz Kompaniyasi</h1>
-        <div>
-            <select>
-                <option>O'zbek</option>
-                <option>Русский</option>
-                <option>English</option>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h2>Yuk berish uchun ma'lumotlarni to'ldiring</h2>
+        <p class="muted">Formani to'ldiring — biz siz bilan tez orada bog'lanamiz.</p>
+      </div>
+
+      <div class="form-card">
+        <form class="form-grid" id="yukBerish" novalidate>
+          <div class="form-group">
+            <label for="yukNomi">Yuk nomi</label>
+            <input type="text" id="yukNomi" name="yukNomi" placeholder="Masalan: Oziq-ovqat konteyneri" required>
+          </div>
+
+          <div class="form-group">
+            <label for="yukTuri">Yuk turi</label>
+            <select id="yukTuri" name="yukTuri" required>
+              <option value="">Tanlang</option>
+              <option value="Oziq-ovqat">Oziq-ovqat</option>
+              <option value="Qurilish materiali">Qurilish materiali</option>
+              <option value="Maishiy texnika">Maishiy texnika</option>
+              <option value="Fermer">Fermer</option>
+              <option value="Boshqa">Boshqa</option>
             </select>
-            <a href="#" class="auth-link">Kirish</a>
-            <button onclick="window.location.href='profile.html'" class="profile-btn">
-    Profile
+          </div>
+
+          <div class="form-group">
+            <label for="joatuvchiManzil">Jo'natuvchi manzili</label>
+            <input type="text" id="joatuvchiManzil" name="joatuvchiManzil" placeholder="Manzilni kiriting" required>
+          </div>
+
+          <div class="form-group">
+            <label for="qabulManzil">Qabul qiluvchi manzili</label>
+            <input type="text" id="qabulManzil" name="qabulManzil" placeholder="Manzilni kiriting" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ogirlik">Yuk og'irligi (kg)</label>
+            <input type="number" id="ogirlik" name="ogirlik" min="1" placeholder="Masalan: 1200" required>
+          </div>
+
+          <div class="form-group">
+            <label for="hajm">Hajm (m³) — ixtiyoriy</label>
+            <input type="text" id="hajm" name="hajm" placeholder="Masalan: 2.5">
+          </div>
+
+          <div class="form-group full">
+            <label for="telefon">Telefon raqami</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+998901234567" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="qoshimcha">Qo'shimcha ma'lumot</label>
+            <textarea id="qoshimcha" name="qoshimcha" rows="4" placeholder="Agar kerak bo'lsa..."></textarea>
+          </div>
+
+          <div class="form-actions full">
+            <button type="reset" class="btn btn-ghost">Tozalash</button>
+            <button type="submit" class="btn btn-primary">✓ Yuborish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-columns">
+          <div class="col"><h5>Yukchi.uz</h5><ul><li><a href="truck.html">Bosh sahifa</a></li><li><a href="yukolish.html">Xizmatlar</a></li></ul></div>
+          <div class="col"><h5>Support</h5><ul><li><a href="aloqa.html">Yordam</a></li><li><a href="#">Support Center</a></li></ul></div>
+          <div class="col"><h5>Blog</h5><ul><li><a href="#">Blog</a></li><li><a href="#">Yangiliklar</a></li></ul></div>
         </div>
-    </header>
-
-   <nav>
-    <a href="truck.html">Bosh sahifa</a>
-    <a href="yukolish.html" id="nav-yukolish">Yuk-olish</a>
-    <a href="yukberish.html" id="nav-yukberish">Yuk-berish</a>
-    <a href="filiallar.html">Filiallar</a>
-    <a href="aloqa.html">Aloqa</a>
-    <a href="xarita.html">Xarita</a>
-</nav>
-    <main>
-        
-
-                    <div class="form-column">
-                        <h2>Yuk berish uchun ma'lumotlarni to'ldiring</h2>
-                        <p class="muted">Formani to'ldiring — biz siz bilan tez orada bog'lanamiz.</p>
-
-                        <form class="form-grid" action="#" method="post" novalidate>
-                            <div class="form-group">
-                                <label for="yukNomi">Yuk nomi</label>
-                                <input type="text" id="yukNomi" name="yukNomi" placeholder="Masalan: Oziq-ovqat konteyneri" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="yukTuri">Yuk turi</label>
-                                <select id="yukTuri" name="yukTuri" required>
-                                    <option value="">Tanlang</option>
-                                    <option value="Oziq-ovqat">Oziq-ovqat</option>
-                                    <option value="Qurilish materiali">Qurilish materiali</option>
-                                    <option value="Maishiy texnika">Maishiy texnika</option>
-                                    <option value="Fermer">Fermer</option>
-                                    <option value="Boshqa">Boshqa</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="joatuvchiManzil">Jo'natuvchi manzili</label>
-                                <input type="text" id="joatuvchiManzil" name="joatuvchiManzil" placeholder="Manzilni kiriting" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="qabulManzil">Qabul qiluvchi manzili</label>
-                                <input type="text" id="qabulManzil" name="qabulManzil" placeholder="Manzilni kiriting" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="ogirlik">Yuk og'irligi (kg)</label>
-                                <input type="number" id="ogirlik" name="ogirlik" min="1" placeholder="Masalan: 1200" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="hajm">Hajm (m³) — ixtiyoriy</label>
-                                <input type="text" id="hajm" name="hajm" placeholder="Masalan: 2.5">
-                            </div>
-
-                            <div class="form-group full">
-                                <label for="telefon">Telefon raqami</label>
-                                <input type="tel" id="telefon" name="telefon" placeholder="+998901234567" required>
-                            </div>
-
-                            <div class="form-group full">
-                                <label for="qoshimcha">Qo'shimcha ma'lumot</label>
-                                <textarea id="qoshimcha" name="qoshimcha" rows="4" placeholder="Agar kerak bo'lsa..."></textarea>
-                            </div>
-
-                            <div class="form-actions full">
-                                <button type="submit" class="btn btn-primary">Yuborish</button>
-                                <button type="reset" class="btn btn-ghost">Tozalash</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="footer-brand-right">
+          <div class="brand-box">
+            <p class="brand-desc">Ijtimoiy tarmoqlarimiz orqali bog'lanishingiz mumkin.</p>
+            <div class="brand-contacts">
+              <a href="mailto:info@yukchi.uz" class="icon-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8.5v7A2.5 2.5 0 005.5 18h13a2.5 2.5 0 002.5-2.5v-7M3 8.5L12 14l9-5.5M3 8.5A2.5 2.5 0 015.5 6h13A2.5 2.5 0 0121 8.5" stroke="#cfe8ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="tel:+998901234567" class="icon-link" aria-label="Phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 013.08 4.18 2 2 0 015 2h3a2 2 0 012 1.72c.12 1.05.38 2.07.76 3.03a2 2 0 01-.45 2.11L9.91 10.09a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.96.38 1.98.64 3.03.76A2 2 0 0122 16.92z" stroke="#cfe8ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="https://t.me/yourchannel" class="icon-link" target="_blank" rel="noopener" aria-label="Telegram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L2 12l4 1 1 4 15-15-5 13 4-13z" stroke="#cfe8ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
-        </section>
-    </main>
-    
-    
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 Yukchi.uz — Barcha huquqlar himoyalangan.</span></div>
+    </div>
+  </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form.form-grid');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-
-        const yukNomi = document.getElementById('yukNomi').value.trim();
-        const yukTuri = document.getElementById('yukTuri').value.trim();
-        const joatuvchiManzil = document.getElementById('joatuvchiManzil').value.trim();
-        const qabulManzil = document.getElementById('qabulManzil').value.trim();
-        const ogirlik = document.getElementById('ogirlik').value.trim();
-        const hajm = document.getElementById('hajm').value.trim();
-        const telefon = document.getElementById('telefon').value.trim();
-        const qoshimcha = document.getElementById('qoshimcha').value.trim();
-
-        if (!yukNomi || !yukTuri || !joatuvchiManzil || !qabulManzil || !ogirlik || !telefon) {
-            alert('Iltimos, barcha majburiy maydonlarni to‘ldiring!');
-            return;
-        }
-
-        
-        alert('Buyurtma qabul qilindi!');
-
-        form.reset(); 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const authLink = document.querySelector('.auth-link');
+      if (authLink) {
+        let loggedIn = false;
+        try { loggedIn = localStorage.getItem('loggedIn') === 'true'; } catch (e) {}
+        if (loggedIn) {
+          authLink.textContent = 'Chiqish'; authLink.href = '#';
+          authLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            try { localStorage.removeItem('loggedIn'); localStorage.removeItem('username'); } catch (err) {}
+            window.location.href = 'truck.html';
+          });
+        } else { authLink.textContent = 'Kirish'; authLink.href = 'kirish1.html'; }
+      }
     });
-});
-</script>
 
+    document.getElementById('yukBerish').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const required = ['yukNomi', 'yukTuri', 'joatuvchiManzil', 'qabulManzil', 'ogirlik', 'telefon'];
+      const empty = required.filter(id => !document.getElementById(id).value.trim());
+      if (empty.length) {
+        alert("Iltimos, barcha majburiy maydonlarni to'ldiring!");
+        document.getElementById(empty[0]).focus();
+        return;
+      }
+      alert('✅ Buyurtma muvaffaqiyatli qabul qilindi!');
+      this.reset();
+    });
+  </script>
 
-
-    </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            const authLink = document.querySelector('.auth-link');
-            if(!authLink) return;
-            const loggedIn = (function(){ try { return localStorage.getItem('loggedIn') === 'true'; } catch(e){ return false; } })();
-            if(loggedIn){
-                authLink.textContent = 'Chiqish';
-                authLink.href = '#';
-                const newLink = authLink.cloneNode(true);
-                authLink.parentNode.replaceChild(newLink, authLink);
-                newLink.addEventListener('click', function(e){
-                    e.preventDefault();
-                    try{ localStorage.removeItem('loggedIn'); localStorage.removeItem('username'); } catch(err){}
-                    window.location.href = 'truck.html';
-                });
-            } else {
-                authLink.textContent = 'Kirish';
-                authLink.href = 'kirish1.html';
-            }
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const authLink = document.getElementById('authLink');
+      const profileBtn = document.getElementById('profileBtn');
+      let loggedIn = false;
+      try { loggedIn = localStorage.getItem('loggedIn') === 'true'; } catch (e) {}
+      if (authLink) {
+        if (loggedIn) {
+          authLink.textContent = 'Chiqish'; authLink.href = '#';
+          authLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            try { localStorage.removeItem('loggedIn'); localStorage.removeItem('username'); } catch (err) {}
+            window.location.href = 'truck.html';
+          });
+        } else { authLink.textContent = 'Kirish'; authLink.href = 'kirish1.html'; }
+      }
+      if (profileBtn) {
+        profileBtn.addEventListener('click', () => {
+          if (!localStorage.getItem('loggedIn')) { alert("Profilga o'tish uchun avval tizimga kiring!"); window.location.href = 'kirish1.html'; }
+          else window.location.href = 'profile.html';
         });
-
-        
-    </script>
-    </html>
-    
-    
-    
-        <footer class="site-footer">
-            <div class="container footer-inner">
-                <div class="footer-top">
-                    
-
-                    <div class="footer-columns">
-                        <div class="col">
-                             <h5>truckway</h5>
-                            <ul>
-                                <li><a href="truck.html">Bosh sahifa</a></li>
-                                <li><a href="yukolish.html">Xizmatlar</a></li>
-                                
-                           
-                            </ul>
-                        </div>
-
-                        <div class="col">
-                            <h5>Support</h5>
-                            <ul>
-                                <li><a href="aloqa.html">Yordam mavzulari</a></li>
-                                
-                                <li><a href="#">Support Center</a></li>
-                                
-                            </ul>
-                        </div>
-
-                        
-
-                        <div class="col">
-                            <h5>Blog</h5>
-                            <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Yangiliklar</a></li>
-                                
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="footer-brand-right">
-                        <div class="brand-box">
-                            
-                             <div class="col">
-    <p class="brand-desc">Bizning ijtimoiy tarmoqlarimiz orqali kompaniyamiz bilan bog‘lanishingiz mumkin.</p>
-</div>
-<br>
-                            <div class="brand-contacts">
-                                <a href="mailto:info@yukchi.uz" class="icon-link" aria-label="Email">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13a2.5 2.5 0 0 0 2.5-2.5v-7" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-                                <a href="tel:+998901234567" class="icon-link" aria-label="Phone">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.76 3.03a2 2 0 0 1-.45 2.11L9.91 10.09a16 16 0 0 0 6 6l1.23-1.23a2 2 0 0 1 2.11-.45c.96.38 1.98.64 3.03.76A2 2 0 0 1 22 16.92z" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-                                <a href="https://t.me/yourchannel" class="icon-link" target="_blank" rel="noopener" aria-label="Telegram">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L2 12l4 1 1 4 15-15-5 13 4-13z" stroke="#cfe8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
-
-                                
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-            </div>
-        </footer>
+      }
+    });
+  </script>
+</body>
+</html>

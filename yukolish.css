@@ -1,284 +1,142 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-
-.profile-btn {
-   display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none;
-  font-weight: 600;
-  margin-left: 12px;
-  transition: background .15s ease, color .15s ease, transform .08s ease, box-shadow .15s ease;
-}
-.profile-btn:hover {
-     background: #ffffff;
-  color: #0b3472;
-  transform: translateY(-2px);
-}
-
-body {
-  background-color: #f5f7fa;
-  color: #333;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0a0a23;
-  padding: 10px 40px;
-  color: white;
-}
-
-header img {
-  height: 60px;
-}
-
-header h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: 20px;
-}
-
-header select {
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  margin-right: 10px;
-}
-
-header .auth-link {
-  margin-left: 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  background-color: #007bff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-header .auth-link:hover {
-  background-color: #0056b3;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #1e1e2f;
-  padding: 10px 0;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #4db8ff;
-}
+/* ============================================
+   YUKOLISH.CSS — Yuk olish sahifasi
+============================================ */
 
 main {
-  padding: 40px;
-  text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 52px 24px 60px;
 }
+
+main > h2 {
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 36px;
+  letter-spacing: -0.5px;
+}
+
+.cards-wrap { width: 100%; }
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  padding: 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
 }
 
+/* ======= CARD ======= */
 .card {
-  background-color: white;
-  border-radius: 12px;
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(8, 30, 60, 0.08);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  transition: all .25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  border-color: rgba(255,107,26,0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
 }
 
 .card img {
   width: 100%;
-  height: 180px;
+  height: 175px;
   object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter .25s;
+}
+.card:hover img { filter: brightness(1); }
+
+.card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
-.card-body { padding: 18px; display:flex; flex-direction:column; gap:12px; }
-.card-title { font-size:18px; color:#072041; margin:0; }
-.card-meta { display:flex; gap:12px; flex-wrap:wrap; color:#5b6b78; font-size:14px; }
-.meta-item { background:#f1f5f9; padding:6px 10px; border-radius:8px; }
-.card-bottom { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-.price { font-weight:700; color:#0b2a57; font-size:18px; }
-.actions { display:flex; gap:8px; }
-.btn.select-btn { background:#ff7a00; color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
-.btn.select-btn:hover { background:#e06b00; }
-
-footer {
-  margin-top: 40px;
-  background-color: #003366;
-  color: white;
-  padding: 10px 0;
-  text-align: center;
+.card-title {
+  font-family: var(--font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.2px;
 }
 
-
-
-
-
-.card img { width:100%; height:180px; object-fit:cover; display:block; }
-
-
-
-
-
-/* Wide multi-column footer styles */
-.site-footer {
-    background: #041b33;
-    color: #cfe8ff;
-    padding: 26px 30px;
+.card-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.site-footer .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.site-footer .footer-top {
-    display: grid;
-    grid-template-columns: 1fr 520px;
-    gap: 28px;
-    align-items: start;
-}
-
-.footer-apps {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 1px;
-}
-
-.app-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    color: #cfe8ff;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    font-weight: 600;
-}
-
-.footer-columns {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-}
-
-.footer-columns .col h5 {
-    color: #dff3ff;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.footer-columns ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-columns li {
-    margin-bottom: 8px;
-}
-
-.footer-columns a {
-    color: #a9d5ff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-columns a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.footer-brand-right .brand-box {
-    background: transparent;
-    text-align: center;
-    padding-left: 24px;
-    border-left: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.brand-name {
-    color: #fff;
-    margin: 0 0 5px;
-}
-
-.brand-desc {
-    font-size: 13px !important;
-}
-
-.brand-contacts {
-    display: flex;
-    gap: 10px;
-}
-
-.icon-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    color: #cfe8ff;
-    text-decoration: none;
-}
-
-.icon-link svg {
-    display: block;
-}
-
-.footer-bottom {
-    margin-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    padding-top: 18px;
-    text-align: center;
-    color: #9fc7ff;
-}
-
-/* Auth link / login button styling */
-header .auth-link {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
+.meta-item {
   background: rgba(255,255,255,0.06);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none;
-  font-weight: 600;
-  margin-left: 12px;
-  transition: background .15s ease, color .15s ease, transform .08s ease, box-shadow .15s ease;
-  box-shadow: 0 2px 8px rgba(2,6,23,0.15);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.price {
+  font-family: var(--font-head);
+  font-weight: 800;
+  color: var(--orange);
+  font-size: 15px;
+  letter-spacing: -0.3px;
+}
+
+.actions { display: flex; gap: 8px; }
+
+.btn.select-btn {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: var(--font-body);
+  transition: all .18s;
+  box-shadow: 0 4px 14px rgba(255,107,26,0.3);
+  white-space: nowrap;
+}
+.btn.select-btn:hover {
+  background: var(--orange2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255,107,26,0.4);
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 1100px) {
+  .cards-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  main > h2 { font-size: 26px; }
+  .cards-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  main { padding: 32px 12px 48px; }
+  main > h2 { font-size: 22px; }
+  .cards-container { grid-template-columns: 1fr; }
 }

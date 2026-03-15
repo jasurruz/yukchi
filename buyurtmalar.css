@@ -1,222 +1,106 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background-color: #f5f7fa;
-    color: #333;
-  }
-  
-.profile-btn {
-   display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none;
+/* ============================================
+   BUYURTMALAR.CSS — Buyurtma sahifasi
+============================================ */
+
+body { background: var(--navy); color: var(--text); font-family: var(--font-body); }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(8,15,30,0.97);
+  backdrop-filter: blur(20px);
+  padding: 0 44px;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+
+.header-left { display:flex; align-items:center; gap:14px; }
+.header-left img { height:44px; object-fit:contain; }
+.header-left h1 { font-family:var(--font-head); font-size:17px; font-weight:800; color:#fff; }
+.header-right { display:flex; align-items:center; gap:10px; }
+
+nav {
+  display:flex; justify-content:center;
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  flex-wrap:wrap;
+}
+nav a {
+  color: var(--text-muted); text-decoration:none;
+  font-weight:600; font-size:13.5px; font-family:var(--font-body);
+  padding:13px 22px; display:inline-block;
+  border-bottom:2px solid transparent; transition:all .18s;
+}
+nav a:hover { color:#fff; border-bottom-color:var(--orange); }
+nav a.active { color:#fff; border-bottom-color:var(--orange); }
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 24px 60px;
+}
+
+main h2 {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.4px;
+}
+
+#buyurtma-details {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+#buyurtma-details p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+#buyurtma-details p:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+#buyurtma-details strong {
+  color: #fff;
   font-weight: 600;
-  margin-left: 12px;
-  transition: background .15s ease, color .15s ease, transform .08s ease, box-shadow .15s ease;
-}
-.profile-btn:hover {
-     background: #ffffff;
-  color: #0b3472;
-  transform: translateY(-2px);
+  min-width: 120px;
 }
 
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0a0a23;
-    padding: 10px 40px;
-    color: white;
-  }
-  
-  header img {
-    height: 60px;
-  }
-  
-  header h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    margin-left: 20px;
-  }
-  
-  header select {
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 10px;
-  }
-  
-  header .auth-link {
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    background-color: #007bff;
-    padding: 6px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  header .auth-link:hover {
-    background-color: #0056b3;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center;
-    background-color: #1e1e2f;
-    padding: 10px 0;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  nav a:hover {
-    color: #4db8ff;
-  }
-  
-  main {
-    padding: 40px;
-    text-align: center;
-  }
-  
-  
-  
-  #buyurtma-details p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.5s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
- /* Wide multi-column footer styles */
-.site-footer {
-    background: #041b33;
-    color: #cfe8ff;
-    padding: 26px 30px;
+.confirm-btn,
+button[onclick*="submitOrder"] {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255,107,26,0.3);
+  transition: all .18s;
 }
+button:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,26,0.4); }
 
-.site-footer .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+@media (max-width: 480px) {
+  main { padding: 32px 12px 48px; }
+  #buyurtma-details { padding: 20px 16px; }
 }
-
-.site-footer .footer-top {
-    display: grid;
-    grid-template-columns: 1fr 520px;
-    gap: 28px;
-    align-items: start;
-}
-
-
-
-
-.footer-columns {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-}
-
-.footer-columns .col h5 {
-    color: #dff3ff;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.footer-columns ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-columns li {
-    margin-bottom: 8px;
-}
-
-.footer-columns a {
-    color: #a9d5ff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-columns a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.footer-brand-right .brand-box {
-    background: transparent;
-    text-align: center;
-    padding-left: 24px;
-    border-left: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.brand-name {
-    color: #fff;
-    margin: 0 0 5px;
-}
-
-.brand-desc {
-    font-size: 13px !important;
-}
-
-.brand-contacts {
-    display: flex;
-    gap: 10px;
-}
-
-.icon-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    color: #cfe8ff;
-    text-decoration: none;
-}
-
-.icon-link svg {
-    display: block;
-}
-
-.footer-bottom {
-    margin-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    padding-top: 18px;
-    text-align: center;
-    color: #9fc7ff;
-}
-
-  

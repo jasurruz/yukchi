@@ -1,151 +1,129 @@
-/* =========================
-   ALOQA.CSS (CLEAN)
-   Navbar + footer = common.css
-   Bu fayl faqat Aloqa page kontenti uchun
-========================= */
-body{
-  background-color:#e2e4e9;
-  color:#000000; 
-}
+/* ============================================
+   ALOQA.CSS — Aloqa sahifasi
+============================================ */
 
-.contact-title{
-  text-align: center;
-  font-size: 32px;
-  margin: 10px 0 26px;
-  color: #000000;
-  font-weight: 800;
-}
-
-/* main layout */
-main{
-  max-width: 1200px;
+main {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 52px 24px 60px;
 }
 
-/* cards container */
-.contact-container{
+.contact-title {
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+.contact-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  justify-content: center;
+  gap: 24px;
   align-items: stretch;
 }
 
-/* info + form card (dark theme) */
 .contact-info,
-.contact-form{
-  flex: 1 1 320px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-  color: #000000;
+.contact-form {
+  flex: 1 1 0;
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
 }
 
-/* headings inside cards */
-.contact-info h3,
-.contact-form h3{
-  font-size: 18px;
-  font-weight: 800;
-  margin: 0 0 10px;
-  color: #000000;
+/* Info card */
+.contact-info h3 {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin: 0 0 8px;
 }
 
-.contact-info p{
-  margin: 0 0 12px;
-  color: rgba(0, 0, 0, 0.88);
-  line-height: 1.45;
+.contact-info p {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  margin-bottom: 20px;
+  line-height: 1.55;
 }
 
-/* form layout */
-.contact-form form{
+/* Form card */
+.contact-form h3 {
+  font-family: var(--font-head);
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.contact-form form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .contact-form input,
-.contact-form textarea{
+.contact-form textarea {
   width: 100%;
-  padding: 12px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.06);
-  color: #000000;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14.5px;
   outline: none;
+  transition: border-color .18s, box-shadow .18s;
 }
 
 .contact-form input::placeholder,
-.contact-form textarea::placeholder{
-  color: rgba(0, 0, 0, 0.65);
-}
+.contact-form textarea::placeholder { color: rgba(110,135,168,0.6); }
 
 .contact-form input:focus,
-.contact-form textarea:focus{
-  border-color: rgba(77,184,255,0.55);
-  box-shadow: 0 0 0 3px rgba(77,184,255,0.18);
+.contact-form textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,107,26,0.12);
+  background: rgba(255,107,26,0.04);
 }
 
-/* submit button */
-.contact-form button{
-  padding: 12px 14px;
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.contact-form button {
+  padding: 13px 18px;
   border: none;
-  border-radius: 12px;
-  font-weight: 800;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14.5px;
+  font-family: var(--font-body);
   cursor: pointer;
-  background: #ff7a00;
-  color: #000000;
-  transition: transform .08s ease, filter .15s ease;
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255,107,26,0.3);
+  transition: all .18s;
 }
-
-.contact-form button:hover{
+.contact-form button:hover {
+  background: var(--orange2);
   transform: translateY(-2px);
-  filter: brightness(1.05);
+  box-shadow: 0 10px 28px rgba(255,107,26,0.4);
 }
 
-/* responsive */
-@media (max-width: 768px){
-  .contact-title{
-    font-size: 22px;
-  }
-  main{
-    padding: 28px 14px 50px;
-  }
+/* ======= RESPONSIVE ======= */
+@media (max-width: 900px) {
+  .contact-container { flex-direction: column; }
 }
 
-
-/* MAIN kengligi (desktopda yonma-yon chiqishi uchun) */
-main{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px 60px;
-}
-
-/* Yonma-yon layout (desktop) */
-.contact-container{
-  display: flex;
-  gap: 22px;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: nowrap;           /* ✅ DESKTOP: pastga tushmasin */
-}
-
-/* Ikkala kartaga teng joy */
-.contact-info,
-.contact-form{
-  flex: 1 1 0;                 /* ✅ teng bo‘lib bo‘linadi */
-  min-width: 420px;            /* ✅ juda kichrayib ketmasin */
-}
-
-/* ✅ Mobile: pastga tushsin */
-@media (max-width: 992px){
-  .contact-container{
-    flex-wrap: wrap;           /* mobile/tablet: pastga tushadi */
-  }
-  .contact-info,
-  .contact-form{
-    min-width: 100%;
-  }
+@media (max-width: 480px) {
+  main { padding: 32px 12px 48px; }
+  .contact-title { font-size: 26px; }
 }

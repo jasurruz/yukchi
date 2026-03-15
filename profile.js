@@ -180,5 +180,5 @@ document.getElementById("saveDriverBtn").addEventListener("click", async () => {
 // =======================================
 document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = "kirish1.html";
+    window.location.href = "index.html";
 });
